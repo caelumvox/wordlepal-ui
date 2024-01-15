@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-content>
+    <h1>List of all Wordle Solutions (A-Z)</h1>
+  </mat-card-content>
+</mat-card>
+
+<mat-grid-list cols="7" rowHeight="4:1">
+  @for (word of words; track word) {
+    <mat-grid-tile>{{ word }}</mat-grid-tile>
+  }
+</mat-grid-list>
