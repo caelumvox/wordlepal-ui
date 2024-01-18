@@ -1,10 +1,19 @@
 <mat-card>
+  <mat-card-title>
+    <h1>List of all Wordle Solutions</h1>
+  </mat-card-title>
   <mat-card-content>
-    <h1>List of all Wordle Solutions (A-Z)</h1>
+    <mat-form-field>
+      <mat-label>Sort Order</mat-label>
+      <select matNativeControl required [(ngModel)]="sortOption" (change)="setSortSelection()">
+        <option [ngValue]="'atoz'" selected>A-to-Z</option>
+        <option [ngValue]="'byDate'">By Date</option>
+      </select>
+    </mat-form-field>
   </mat-card-content>
 </mat-card>
 
-<mat-grid-list cols="7" rowHeight="4:1">
+<mat-grid-list *ngIf="sortOption == 'atoz'" cols="7" rowHeight="4:1">
   @for (word of words; track word) {
     <mat-grid-tile>{{ word }}</mat-grid-tile>
   }
