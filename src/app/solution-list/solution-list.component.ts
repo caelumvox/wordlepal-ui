@@ -2,17 +2,26 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule} from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { WordlepalApiService } from '../wordlepal-api.service';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-solution-list',
   standalone: true,
-  imports: [MatCardModule, MatGridListModule, FormsModule, MatInputModule, MatSelectModule, MatFormFieldModule, CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule, 
+    MatCardModule, 
+    MatFormFieldModule, 
+    MatGridListModule, 
+    MatInputModule, 
+    MatSelectModule,
+    MatTableModule
+  ],
   templateUrl: './solution-list.component.html',
   styleUrl: './solution-list.component.css'
 })
@@ -20,6 +29,7 @@ export class SolutionListComponent {
   sortOption: string = 'atoz';
   words: string[];
   wordsByDate: any;
+  displayedColumns: string[] = ['date', 'words'];
 
   constructor(
     private wordlepalApiService: WordlepalApiService) {
@@ -35,14 +45,7 @@ export class SolutionListComponent {
         }
       }
       this.words.sort();
+      this.wordsByDate.sort((a: any, b: any) => b.date - a.date);
     });
-  }
-
-  setSortSelection() {
-
-  }
-
-  getObservable(value: string) {
-    return of(value);
   }
 }
