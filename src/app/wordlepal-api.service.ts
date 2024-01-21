@@ -16,4 +16,11 @@ export class WordlepalApiService {
   getAllSolutions(): Observable<SolutionEnvelope> {
     return this.httpClient.get<SolutionEnvelope>(this.url + "/solution", {});
   }
+
+  addSolution(solution: any) {
+    this.httpClient.post(this.url + "/solution", solution, {}).subscribe(
+      (response) => console.log(`Response: ${response}`),
+      (error) => console.log(`Error occurred: ${error}`)
+    );
+  }
 }
