@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+import moment from 'moment';
 import { WordlepalApiService } from '../wordlepal-api.service';
 
 export const WORDLEPAL_DATE_FORMAT = {
@@ -36,17 +37,22 @@ export const WORDLEPAL_DATE_FORMAT = {
   styleUrl: './solution-add.component.css'
 })
 export class SolutionAddComponent {
-  date: Date = new Date();
+  date: moment.Moment;
   words: string = '';
 
   constructor(private wordlepalApiService: WordlepalApiService) {
+    this.date = moment();
   }
 
   ngOnInit() {
   }
 
   submitSolution() {
-    const dateValue = this.date.getFullYear()*10000 + (this.date.getMonth()+1)*100 + this.date.getDate();
+    if (!this.words) {
+      console.log('No words entered. Not submitting.');
+      return;
+    }
+    const dateValue = this.date.year()*10000 + (this.date.month()+1)*100 + this.date.date();
     const wordList = this.words.split(',');
     const solution = {
       date: dateValue,

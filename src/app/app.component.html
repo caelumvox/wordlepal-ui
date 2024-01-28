@@ -1,2 +1,26 @@
-
+<p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><a class="wordlepal-link-light" href="/">wordlepal</a></span>
+    <span class="menubar-spacer"></span>
+    <button mat-icon-button 
+      class="example-icon" 
+      aria-label="Example icon-button with menu icon"
+      [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a class="wordlepal-link-dark" href="/list-solutions"> 
+        <button mat-menu-item>Show</button>
+      </a>
+      <a class="wordlepal-link-dark" href="/submit-solution">
+        <button mat-menu-item>Submit</button>
+      </a>
+      <a class="wordlepal-link-dark" href="/assist-solution">
+        <button mat-menu-item>Assist</button>
+      </a>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+</p>
 <router-outlet></router-outlet>
