@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 import moment from 'moment';
 import { WordlepalApiService } from '../wordlepal-api.service';
@@ -40,7 +41,8 @@ export class SolutionAddComponent {
   date: moment.Moment;
   words: string = '';
 
-  constructor(private wordlepalApiService: WordlepalApiService) {
+  constructor(private wordlepalApiService: WordlepalApiService,
+    private _snackBar: MatSnackBar) {
     this.date = moment();
   }
 
@@ -50,6 +52,9 @@ export class SolutionAddComponent {
   submitSolution() {
     if (!this.words) {
       console.log('No words entered. Not submitting.');
+      this._snackBar.open('No words entered. Not submitting.', 'Close', {
+        duration: 2000,
+      });
       return;
     }
     const dateValue = this.date.year()*10000 + (this.date.month()+1)*100 + this.date.date();
@@ -60,6 +65,9 @@ export class SolutionAddComponent {
     }
     console.log(`The solution is ${JSON.stringify(solution)}`);
     this.wordlepalApiService.addSolution(solution);
-
+    this._snackBar.open(`Solution '${this.words}' for date '${this.date}' added`, 'Close', {
+      duration: 5000,
+    });
+    this.words = '';
   }
 }
