@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -39,7 +39,7 @@ export const WORDLEPAL_DATE_FORMAT = {
   templateUrl: './solution-add.component.html',
   styleUrl: './solution-add.component.css'
 })
-export class SolutionAddComponent {
+export class SolutionAddComponent implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked{
   date: moment.Moment;
   words: string = '';
 
@@ -49,6 +49,47 @@ export class SolutionAddComponent {
   }
 
   ngOnInit() {
+    console.log("OnInit")
+  }
+
+  ngOnChanges() {
+    console.log("OnChanges")
+  }
+
+  ngDoCheck() {
+    console.log("DoCheck")
+  }
+
+  ngAfterContentInit() {
+    console.log("AfterContentInit")
+  }
+
+  ngAfterContentChecked() {
+    console.log("AfterContentChecked")
+  }
+
+  ngAfterViewInit() {
+    console.log("AfterViewInit")
+  }
+
+  ngAfterViewChecked() {
+    console.log("AfterViewChecked")
+  }
+
+  ngOnDestroy() {
+    console.log("OnDestroy")
+  }
+
+  validateWords(wordList: string[]) {
+    for (let word of wordList) {
+      if (!word.match(/^[A-Z]{5}$/)) {
+        console.log(`Invalid word: ${word}`);
+        this._snackBar.open(`Invalid word: ${word}`, 'Close', {
+          duration: 2000,
+        });
+        throw new Error('Invalid word');
+      }
+    }
   }
 
   submitSolution() {
@@ -59,8 +100,18 @@ export class SolutionAddComponent {
       });
       return;
     }
+
     const dateValue = this.date.year()*10000 + (this.date.month()+1)*100 + this.date.date();
     const wordList = this.words.split(',');
+    wordList.forEach((word, index) => {
+      wordList[index] = word.toUpperCase();
+    });
+
+    try {
+      this.validateWords(wordList);
+    } catch (e) {
+      return;
+    }
     const solution = {
       date: dateValue,
       words: wordList
@@ -70,6 +121,8 @@ export class SolutionAddComponent {
     this._snackBar.open(`Solution '${this.words}' for date '${this.date}' added`, 'Close', {
       duration: 5000,
     });
+
+    // Reset the field.
     this.words = '';
   }
 }

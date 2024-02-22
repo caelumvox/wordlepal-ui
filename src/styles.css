@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    --mat-table-header-headline-size: 16px;
+    --mat-table-header-headline-font: Roboto, "Helvetica Neue", sans-serif;
+    --mat-table-row-item-label-text-size: 16px;
+    --mat-table-row-item-label-text-font: Roboto, "Helvetica Neue", sans-serif;
+}
 
 html, body { height: 100%; }
 body { 

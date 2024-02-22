@@ -26,7 +26,7 @@ import { WordlepalApiService } from '../wordlepal-api.service';
   styleUrl: './solution-list.component.css'
 })
 export class SolutionListComponent {
-  sortOption: string = 'atoz';
+  sortOption: string = 'byDate';
   words: string[];
   wordsByDate: any;
   displayedColumns: string[] = ['date', 'words'];
