@@ -1,1 +1,16 @@
-<p>solution-assist works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Wordlepal Assistant</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list class="word-entry-row" cols="5" rowHeight="1:1">
+      <mat-grid-tile class="word-entry-tile" (dblclick)="updateColor()"><input class="word-entry-input" type="text" size="1" /></mat-grid-tile>
+      <mat-grid-tile class="word-entry-tile" (dblclick)="updateColor()"><input class="word-entry-input" type="text" size="1" /></mat-grid-tile>
+      <mat-grid-tile class="word-entry-tile" (dblclick)="updateColor()"><input class="word-entry-input" type="text" size="1" /></mat-grid-tile>
+      <mat-grid-tile class="word-entry-tile" (dblclick)="updateColor()"><input class="word-entry-input" type="text" size="1" /></mat-grid-tile>
+      <mat-grid-tile class="word-entry-tile" (dblclick)="updateColor()"><input class="word-entry-input" type="text" size="1" /></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

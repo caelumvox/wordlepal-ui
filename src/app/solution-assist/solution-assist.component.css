@@ -1,0 +1,11 @@
+.word-entry-row {
+    width: 300px;
+}
+
+.word-entry-tile {
+    border: black solid 1px;
+}
+
+.word-entry-input {
+    border: 0px;
+}
