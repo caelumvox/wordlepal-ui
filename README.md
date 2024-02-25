@@ -1,4 +1,20 @@
-# WordlepalUi
+# wordlepal-ui
+
+The Angular-based user interface for Wordlepal.
+
+# Quickstart
+
+1. Ensure the wordlepal-api is running locally.
+
+2. Install:
+
+   `npm install`
+
+3. Run the application on port 4201
+
+   `npm run start`
+
+# Angular Notes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
 

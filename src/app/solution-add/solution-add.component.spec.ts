@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SolutionAddComponent } from './solution-add.component';
-import { WordlepalApiService } from '../wordlepal-api.service';
+import { WordlepalApiService } from '../services/wordlepal-api.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
 

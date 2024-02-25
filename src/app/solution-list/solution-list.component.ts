@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { WordlepalApiService } from '../wordlepal-api.service';
+import { WordlepalApiService } from '../services/wordlepal-api.service';
 
 @Component({
   selector: 'app-solution-list',

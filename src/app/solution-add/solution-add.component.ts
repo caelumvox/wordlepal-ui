@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 import moment from 'moment';
-import { WordlepalApiService } from '../wordlepal-api.service';
+import { WordlepalApiService } from '../services/wordlepal-api.service';
 
 export const WORDLEPAL_DATE_FORMAT = {
   parse: {
